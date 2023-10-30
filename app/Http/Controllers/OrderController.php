@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Factore;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Order;
 class OrderController extends Controller
@@ -68,6 +71,32 @@ class OrderController extends Controller
         return response()->json([
             'order'=>$order,
             'status'=>'success'
+        ]);
+
+    }
+
+
+
+    public function findproduct($id){
+        $order = Product::find($id)->order_id;
+        return response()->json([
+            $order
+        ]);
+    }
+
+    public function finduser($id){
+        $order = User::find($id)->order_id;
+        return response()->json([
+            $order
+        ]);
+
+    }
+
+
+    public function findfactore($id){
+        $order = Factore::find($id)->order_id;
+        return response()->json([
+            $order
         ]);
 
     }

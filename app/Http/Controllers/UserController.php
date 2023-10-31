@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-
+use SoapClient;
 class UserController extends Controller
 {
     public function register(Request $request)
@@ -30,6 +30,19 @@ class UserController extends Controller
         $user = User::create($request->toArray());
 
         $user->assignRole('customer');
+
+
+        $client = new SoapClient("http://ippanel.com/class/sms/wsdlservice/server.php?wsdl");
+        $user1 = "Mah-di";
+        $pass = "M@AHDII1380";
+        $fromNum = "+9810004223";
+        $toNum = [$request->phone_number];
+        $pattern_code = "c0tlh5pzo9dy6ot";
+        $input_data = [ "first_name" => $request->first_name];
+
+        echo $client->sendPatternSms($fromNum,$toNum,$user1,$pass,$pattern_code,$input_data);
+
+
 
 
         return response()->json([

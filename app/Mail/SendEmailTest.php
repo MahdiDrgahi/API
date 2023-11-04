@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewMemberNotify extends Mailable
+class SendEmailTest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +18,7 @@ class NewMemberNotify extends Mailable
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**
@@ -27,7 +27,7 @@ class NewMemberNotify extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Member Notify',
+            subject: 'Send Email Test',
         );
     }
 

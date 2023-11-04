@@ -18,7 +18,7 @@ class SendEmailTest extends Mailable
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -37,7 +37,7 @@ class SendEmailTest extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.mailtest',
         );
     }
 
